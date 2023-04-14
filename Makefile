@@ -10,7 +10,7 @@ else
 endif
 
 NAME=$(lastword $(subst /, ,$(abspath .)))
-VERSION=$(shell git.exe describe --tags 2>$(NUL) || echo v0.0.0)
+VERSION=$(shell git describe --tags 2>$(NUL) || echo v0.0.0)
 GOOPT=-ldflags "-s -w -X main.version=$(VERSION)"
 EXE=$(shell go env GOEXE)
 
