@@ -3,13 +3,19 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"runtime"
 )
 
 var version string
 
+func progName(path string) string {
+	return filepath.Base(path[:len(path)-len(filepath.Ext(path))])
+}
+
 func mains() error {
-	fmt.Printf("Sample %s-%s-%s by %s\n",
+	fmt.Printf("%s %s-%s-%s by %s\n",
+		progName(os.Args[0]),
 		version, runtime.GOOS, runtime.GOARCH, runtime.Version())
 	return nil
 }
